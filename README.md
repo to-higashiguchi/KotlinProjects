@@ -1,0 +1,2 @@
+# KotlinProjects
+Anddroid Studioを使用した，Kotlinのアプリ開発の練習用リポジトリ
