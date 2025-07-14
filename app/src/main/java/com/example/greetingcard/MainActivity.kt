@@ -66,6 +66,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .padding(16.dp)
                 .align(alignment = Alignment.CenterHorizontally)
+
         )
     }
 }
@@ -90,14 +91,49 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier){
     }
 }
 
+@Composable
+fun ComposeKiji(modifier: Modifier = Modifier) {
+    Column {
+        Image(
+            painter = painterResource(R.drawable.bg_compose_background),
+            contentDescription = null,
+        )
+        Text(
+            text = stringResource(R.string.jetpack_title),
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(16.dp)
+        )
+        Text(
+            text = stringResource(R.string.jetpack_content1),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(start = 16.dp, end = 16.dp)
+        )
+        Text(
+            text = stringResource(R.string.jetpack_content2),
+            fontSize = 16.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier
+                .padding(16.dp)
+        )
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
-fun BirthdayCardPreview() {
+//fun BirthdayCardPreview() {
+//    HappybirthdayTheme {
+//        //GreetingText(message =  "Happy birthday Sam!", from = "From Hina")
+//        GreetingImage(
+//            message = stringResource(R.string.happy_birthday_text),
+//            from = stringResource(R.string.signature_text)
+//        )
+//    }
+//}
+fun ComposeKijiPreview() {
     HappybirthdayTheme {
-        //GreetingText(message =  "Happy birthday Sam!", from = "From Hina")
-        GreetingImage(
-            message = stringResource(R.string.happy_birthday_text),
-            from = stringResource(R.string.signature_text)
-        )
+        ComposeKiji()
     }
 }
