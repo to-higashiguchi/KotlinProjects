@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,7 +46,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    TaskManeger()
+                    Syogen()
                 }
             }
         }
@@ -53,40 +54,78 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TaskManeger(modifier: Modifier = Modifier) {
+fun Syogen(modifier: Modifier = Modifier) {
     Column(
         modifier
+            .statusBarsPadding()
             .fillMaxSize()
-            .statusBarsPadding(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
     ) {
-        Image(
-            painter = painterResource(R.drawable.ic_task_completed),
-            contentDescription = null,
+        Row(Modifier.weight(1f)) {
+            SyogenCard(
+                bgColor = Color(0xFFEADDFF),
+                title = stringResource(R.string.syogen1_title),
+                description = stringResource(R.string.syogen1_description),
+                modifier = Modifier.weight(1f)
+            )
+            SyogenCard(
+                bgColor = Color(0xFFD0BCFF),
+                title = stringResource(R.string.syogen2_title),
+                description = stringResource(R.string.syogen2_description),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            SyogenCard(
+                bgColor = Color(0xFFB69DF8),
+                title = stringResource(R.string.syogen3_title),
+                description = stringResource(R.string.syogen3_description),
+                modifier = Modifier.weight(1f)
+            )
+            SyogenCard(
+                bgColor = Color(0xFFF6EDFF),
+                title = stringResource(R.string.syogen4_title),
+                description = stringResource(R.string.syogen4_description),
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}
 
-        )
-        Text(
-            text = stringResource(R.string.taskmane_title),
-            fontSize = 24.sp,
-            modifier = Modifier
-                .padding(top = 24.dp, bottom = 8.dp),
-            style = TextStyle(
+@Composable
+private fun SyogenCard(
+    bgColor: Color = Color(0xFFEADDFF),
+    title: String = "Title Text",
+    description: String = "text text text text text",
+    modifier: Modifier = Modifier
+){
+    Surface(
+        color = bgColor,
+        modifier = modifier
+            .fillMaxSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = modifier.padding(16.dp)
+        ) {
+            Text(
+                text = title,
+                modifier = Modifier
+                    .padding(bottom = 16.dp),
                 fontWeight = FontWeight.Bold
             )
-        )
-        Text(
-            text = stringResource(R.string.taskmane_description),
-            fontSize = 16.sp,
-            textAlign = TextAlign.Justify
-        )
+            Text(
+                text = description,
+                textAlign = TextAlign.Justify
+            )
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ComposeKijiPreview() {
+fun ComposePreview() {
     HappybirthdayTheme {
-        TaskManeger()
+        Syogen()
     }
 }
