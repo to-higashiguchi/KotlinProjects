@@ -27,6 +27,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ComposeKiji()
+                    TaskManeger()
                 }
             }
         }
@@ -51,33 +53,32 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ComposeKiji(modifier: Modifier = Modifier) {
+fun TaskManeger(modifier: Modifier = Modifier) {
     Column(
-        modifier.statusBarsPadding()
+        modifier
+            .fillMaxSize()
+            .statusBarsPadding(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.bg_compose_background),
+            painter = painterResource(R.drawable.ic_task_completed),
             contentDescription = null,
+
         )
         Text(
-            text = stringResource(R.string.jetpack_title),
+            text = stringResource(R.string.taskmane_title),
             fontSize = 24.sp,
             modifier = Modifier
-                .padding(16.dp)
+                .padding(top = 24.dp, bottom = 8.dp),
+            style = TextStyle(
+                fontWeight = FontWeight.Bold
+            )
         )
         Text(
-            text = stringResource(R.string.jetpack_content1),
+            text = stringResource(R.string.taskmane_description),
             fontSize = 16.sp,
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp)
-        )
-        Text(
-            text = stringResource(R.string.jetpack_content2),
-            fontSize = 16.sp,
-            textAlign = TextAlign.Justify,
-            modifier = Modifier
-                .padding(16.dp)
+            textAlign = TextAlign.Justify
         )
     }
 }
@@ -86,6 +87,6 @@ fun ComposeKiji(modifier: Modifier = Modifier) {
 @Composable
 fun ComposeKijiPreview() {
     HappybirthdayTheme {
-        ComposeKiji()
+        TaskManeger()
     }
 }
